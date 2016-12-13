@@ -9,3 +9,5 @@ $ git clone https://github.com/Nat-Lab/nato_board
 $ npm install
 $ npm run build && npm start
 ```
+
+![演示](https://raw.githubusercontent.com/Nat-Lab/nato_board/master/doc/demo.gif)
