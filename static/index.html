@@ -5,12 +5,12 @@
 <style>
 html, body {
   margin: 0;
+  -webkit-overflow-scrolling: touch;
 }
 textarea {
   height: 100%;
   width: 100%;
   border: none;
-  border-right: 1px solid #ccc;
   resize: none;
   outline: none;
   color: #333;
@@ -18,6 +18,11 @@ textarea {
   font-size: 14px;
   font-family: 'Monaco', courier, monospace;
   padding: 20px;
+}
+@media (max-width: 768px) {
+  textarea {
+    font-size: 18px;
+  }
 }
 </style>
 </head>
