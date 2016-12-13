@@ -20,7 +20,7 @@ doc.subscribe(function(err) {
         var element = document.querySelector('textarea');
         var binding = new StringBinding(element, doc);
         binding.setup();
-      }, 500); // dirty hack, server need some time to create board. 
+      }, 100); // dirty hack, server need some time to create board. 
     }
   };
 });
