@@ -3,7 +3,9 @@
 <meta name="viewport" content="initial-scale=1.0001, minimum-scale=1.0001, maximum-scale=1.0001, user-scalable=no"/>
 <title id="title">natoBoard-md: #</title>
 <style>
+
 html, body, #editor {
+  overflow: hidden;
   margin: 0;
   height: 100%;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -19,6 +21,10 @@ textarea, mddisp {
   vertical-align: top;
   box-sizing: border-box;
   padding: 0 20px;
+}
+
+mddisp {
+  overflow: auto;
 }
 
 textarea {

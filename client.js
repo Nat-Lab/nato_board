@@ -39,8 +39,9 @@ doc.subscribe(function(err) {
       renderer: new marked.Renderer(),
       sanitize: true
     });
-    window.setInterval(function() {
-      mdout.innerHTML = marked(element.value);
+    window.setInterval(function() { // TODO: use event-driven instead of setInterval. 
+      var mdRslt = marked(element.value);
+      if(mdout.innerHTML != mdRslt) mdout.innerHTML = mdRslt;
     }, 500);
   }
 });
