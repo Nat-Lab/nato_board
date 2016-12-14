@@ -1,7 +1,7 @@
 var sharedb = require('sharedb/lib/client');
 var StringBinding = require('sharedb-string-binding');
 
-var socket = new WebSocket('ws://' + window.location.host);
+var socket = new WebSocket((window.location.protocol == 'http:' ? 'ws://' : 'wss://') + window.location.host);
 var connection = new sharedb.Connection(socket);
 
 var hashname = window.location.hash.substring(1);
