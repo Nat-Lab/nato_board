@@ -5,6 +5,7 @@ var connection = new sharedb.Connection(socket);
 var hashname = window.location.hash.substring(1);
 var docname = (hashname == '' ? 'default' : hashname);
 var doc = connection.get(docname, 'textarea');
+window.onhashchange = function() { window.location.reload() }; // do reload on hashtag change (switch channel.)
 document.getElementById('title').innerHTML += docname;
 doc.subscribe(function(err) {
   if (err) throw err;
