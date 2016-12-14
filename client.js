@@ -4,6 +4,7 @@ var socket = new WebSocket((window.location.protocol == 'http:' ? 'ws://' : 'wss
 var connection = new sharedb.Connection(socket);
 var hashname = window.location.hash.substring(1);
 var docname = (hashname == '' ? 'default' : hashname);
+var marked = require('marked');
 var doc = connection.get(docname, 'textarea');
 window.onhashchange = function() { window.location.reload() }; // do reload on hashtag change (switch channel.)
 document.getElementById('title').innerHTML += docname;
@@ -11,6 +12,7 @@ doc.subscribe(function(err) {
   if (err) throw err;
   var xhr = new XMLHttpRequest();
   var element = document.querySelector('textarea');
+  var mdout = document.querySelector('mddisp');
   xhr.open('GET', '/create?name=' + docname);
   xhr.send();
   xhr.onload = function () {
@@ -32,4 +34,13 @@ doc.subscribe(function(err) {
       }, 100); // dirty hack, server need some time to create board.
     }
   };
+  if(mdout) { // we have markdown output? wow. 
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      sanitize: true
+    });
+    window.setInterval(function() {
+      mdout.innerHTML = marked(element.value);
+    }, 500);
+  }
 });
