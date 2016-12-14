@@ -17,7 +17,6 @@ doc.subscribe(function(err) {
     if (this.status == 200) {
       doc = connection.get(docname, 'textarea');
       window.setTimeout(function() {
-        var element = document.querySelector('textarea');
         var binding = new StringBinding(element, doc);
         console.log(binding);
         binding.setup();

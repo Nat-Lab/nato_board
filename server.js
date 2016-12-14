@@ -10,7 +10,8 @@ var WebSocket = require('ws');
 var WebSocketJSONStream = require('websocket-json-stream');
 var backend = new ShareDB();
 var docs = [], conn = backend.connect();
-var createDoc = function (name, cb) {
+var createDoc = function (name) {
+  console.log('creting new board: ', name);
   docs[name] = conn.get(name, 'textarea');
   docs[name].fetch(function(err) {
     if (err) throw err;
@@ -31,7 +32,7 @@ app.get('/create', function (req, res) {
     return;
   }
   res.status(200).end();
-  createDoc(name);
+  if(!docs[name]) createDoc(name);
 });
 
 var server = http.createServer(app);
